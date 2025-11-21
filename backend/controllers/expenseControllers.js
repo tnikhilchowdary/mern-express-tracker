@@ -18,3 +18,16 @@ export const getExpense = async (req, res) => {
         });
     }
 }
+
+
+export const addExpenses = async (req, res) => {
+    try{
+
+    }
+    catch(error){
+        console.error("Error in Adding Expense", error);
+        return res.status(501).json({
+            message:
+        })
+    }
+}
