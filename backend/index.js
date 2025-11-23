@@ -1,5 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
+
 import {connectDb} from "./db/connectDb.js";
 import expense from "./routers/expenseRouter.js"
 
@@ -8,6 +10,7 @@ connectDb();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use("/expenseroutes", expense);
 app.get("/", (req, res) => {
     res.send("NodeJs conencted");

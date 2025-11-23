@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 
 const ExpenseForm = () => {
     const [form, setForm] = useState({
@@ -14,12 +15,23 @@ const ExpenseForm = () => {
         })
     }
 
-
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try{
+            const response = await axios.post("http://localhost:1000/expenseroutes", form);
+            console.log("Succesfully Added", response.data);
+            alert("Expenses Added");
+        }
+        catch(error){
+            console.log("Error", error);
+            alert("Error Adding Expenses!");
+        }
+    }
 
     return(
         <div className="">
             <h1>Welcome to the Expense Form!</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input type="text"
                 name="title"
                 placeholder="Enter Title"
