@@ -1,11 +1,10 @@
-
-import './App.css'
+import Expense from "../src/components/ExpenseForm.jsx";
 
 function App() {
 
   return (
     <>
-      Hi
+      <Expense />
     </>
   )
 }
