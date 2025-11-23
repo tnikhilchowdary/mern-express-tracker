@@ -42,3 +42,55 @@ export const addExpenses = async (req, res) => {
         })
     }
 }
+
+
+export const updateExpenses = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const updateData = req.body;
+        const updatedExpenses = await Expense.findByIdAndUpdate(
+            id, 
+            updateData,
+            {new:true}
+        );
+
+        if(!updatedExpenses){
+            return res.status(404).json({message:"Expense Not Found"});
+        }
+
+        return res.status(200).json({
+            message:"Updated Succesfully",
+            updatedExpenses
+        })
+    }
+    
+    catch(error){
+        console.log("Error in Updating Expenses", error);
+        return res.status(501).json({message:"Error in Updating"});
+    }
+}
+
+
+export const deleteExpenses = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const deleteExpenses = await Expense.findByIdAndUpdate(id, 
+            {new:true}
+        )
+        if(!deleteExpenses){
+            return res.status(201).json({
+                message:"Data not founded to delete"
+            })
+        }
+
+        return res.status(200).json({
+            message:"Deleted Succesfully"
+        })
+    }
+    catch(error){
+        console.error("Error in Deleting Code Code");
+        return res.status(501).json({
+            message:"Error in Deleting Code"
+        })
+    }
+}
