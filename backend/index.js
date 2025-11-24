@@ -5,6 +5,7 @@ import cors from "cors";
 import {connectDb} from "./db/connectDb.js";
 import expense from "./routers/expenseRouter.js"
 
+
 dotenv.config();
 connectDb();
 
