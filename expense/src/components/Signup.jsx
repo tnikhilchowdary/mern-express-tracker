@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
@@ -8,7 +8,8 @@ const Signup = () => {
         email:"",
         password:""
     });
-
+    
+    const navigate = useNavigate();
     const handleChange = async (e) => {
         setForm({
             ...form,
@@ -21,11 +22,13 @@ const Signup = () => {
         try{
             const res = await axios.post("http://localhost:1000/expenseroutes/register", form)
             alert("Signup Succesfully")
+            navigate("/expense");
         }
         catch(error){
             console.log("Error in Submiting form", error);
         }
     }
+
 
     return(
         <div>
