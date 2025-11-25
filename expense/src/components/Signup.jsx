@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 const Signup = () => {
@@ -8,17 +9,28 @@ const Signup = () => {
         password:""
     });
 
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
         setForm({
             ...form,
             [e.target.name]:e.target.value
         })
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try{
+            const res = await axios.post("http://localhost:1000/expenseroutes/register", form)
+            alert("Signup Succesfully")
+        }
+        catch(error){
+            console.log("Error in Submiting form", error);
+        }
+    }
+
     return(
         <div>
             <h1>Welcome to The Signup Page</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input type="name"
                 name="name"
                 placeholder="Enter Name"
@@ -39,6 +51,7 @@ const Signup = () => {
                 />
                 <button>Signup</button>
             </form>
+            <p>If you have already account please <Link to="/">Login here</Link></p>
         </div>
     )
 }

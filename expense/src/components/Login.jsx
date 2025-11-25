@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";
 
@@ -45,6 +46,7 @@ const Login = () => {
                 />
                 <button>Login</button>
             </form>
+            <p>If you dont have an account, please <Link to="/register">regsiter here</Link></p>
         </div>
     );
 };
