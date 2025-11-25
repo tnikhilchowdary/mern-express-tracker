@@ -28,35 +28,64 @@ const Signup = () => {
             console.log("Error in Submiting form", error);
         }
     }
+    return (
+  <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="bg-white p-8 rounded-xl shadow-lg w-[380px]">
+      <h2 className="text-2xl font-semibold text-center mb-6">
+        Create an Account
+      </h2>
 
+      <form onSubmit={handleSubmit} className="space-y-4">
 
-    return(
-        <div>
-            <h1>Welcome to The Signup Page</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="name"
-                name="name"
-                placeholder="Enter Name"
-                value={form.name}
-                onChange={handleChange}
-                />
-                <input type="email"
-                name="email"
-                placeholder="Enter Email"
-                value={form.email}
-                onChange={handleChange}
-                />
-                <input type="password"
-                name="password"
-                placeholder="Enter Password"
-                value={form.password}
-                onChange={handleChange}
-                />
-                <button>Signup</button>
-            </form>
-            <p>If you have already account please <Link to="/">Login here</Link></p>
-        </div>
-    )
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter Name"
+          value={form.name}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded-lg bg-gray-50 
+                     focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          value={form.email}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded-lg bg-gray-50 
+                     focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+          value={form.password}
+          onChange={handleChange}
+          className="w-full px-4 py-2 border rounded-lg bg-gray-50 
+                     focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+
+        <button
+          type="submit"
+          className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg 
+                     font-medium transition"
+        >
+          Signup
+        </button>
+      </form>
+
+      <p className="text-sm text-center mt-4 text-gray-600">
+        Already have an account?{" "}
+        <Link to="/" className="text-blue-600 hover:underline">
+          Login here
+        </Link>
+      </p>
+    </div>
+  </div>
+);
+
 }
 
 export default Signup;
