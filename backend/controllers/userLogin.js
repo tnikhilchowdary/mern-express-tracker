@@ -1,5 +1,6 @@
 import User from "../schema/userSchema.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const Login = async (req, res) => {
     try {
@@ -20,8 +21,15 @@ export const Login = async (req, res) => {
             });
         }
 
+        const token = jwt.sign(
+            {id:user._id},
+            process.env.JWT_SECRET,
+            {expiresIn : process.env.JWT_EXPIRES},
+        )
+
         return res.status(200).json({
             message: "Login Successfully",
+            token,
             user
         });
 
