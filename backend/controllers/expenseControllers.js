@@ -2,7 +2,7 @@ import Expense from "../schema/ExpenseSchema.js";
 
 export const getExpense = async (req, res) => {
     try{
-        const expenses = await Expense.find({user:req.userId});
+        const expenses = await Expense.find({});
 
         return res.status(200).json({
             message:"Fetched Expense",
@@ -24,7 +24,7 @@ export const addExpenses = async (req, res) => {
     try{
         const {title, amount, category, date} = req.body;
         const expense = new Expense({
-            title, amount, category, date, user:req.userId
+            title, amount, category, date
         });
 
         await expense.save();
